@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand">Navbar</a>
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 offset-1">
+            <a href="/books/add" class="btn btn-success">+ Add</a>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <th:block th:each="book : ${books}">
+                    <tr>
+                        <th th:text="${book.id}"></th>
+                        <th th:text="${book.title}"></th>
+                        <th th:text="${book.author}"></th>
+                        <th>
+                            <a th:href="@{'/books/delete/'+${book.id}}" class="btn btn-danger">Delete</a> ||
+                            <a th:href="@{'/books/update/'+${book.id}}" class="btn btn-primary">Update</a>
+                        </th>
+                    </tr>
+                </th:block>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
