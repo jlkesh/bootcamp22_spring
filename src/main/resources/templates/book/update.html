@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand">Navbar</a>
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 offset-1">
+            <form th:action="@{'/books/update/'+${book.id}}" method="post">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Book Title</label>
+                    <input type="text" class="form-control" id="title" name="title" th:value="${book.title}">
+                </div>
+                <div class="mb-3">
+                    <label for="author" class="form-label">Book Author</label>
+                    <input type="text" class="form-control" id="author" name="author" th:value="${book.author}">
+                </div>
+                <a href="/books" class="btn btn-success" autofocus>home</a>
+                <button type="submit" class="btn btn-primary">Update</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
